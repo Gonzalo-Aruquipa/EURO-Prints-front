@@ -14,3 +14,17 @@
 .navbar{
   width: 100%;
 }
+.drawer-color{
+  color: white;
+  background-color: black;
+}
+.list{
+  height: 100vh;
+}
+.header-color{
+  color: #fff;
+}
+.login-header{
+  color: #fff;
+  text-decoration: none;
+}

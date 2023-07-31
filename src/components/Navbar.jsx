@@ -12,7 +12,7 @@ export const Navbar = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="relative" className='color-main navbar'>
+      <AppBar position="absolute" className='color-main navbar'>
         <Toolbar>
           <IconButton
             size="large"
