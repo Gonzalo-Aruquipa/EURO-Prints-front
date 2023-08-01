@@ -28,3 +28,10 @@
   color: #fff;
   text-decoration: none;
 }
+.color-table{
+  background: #041A74;
+  background: -moz-linear-gradient(-45deg, #041A74 0%, #041A74 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, #041A74), color-stop(100%, #041A74));
+  background: -webkit-linear-gradient(-45deg, #041A74 0%, #041A74 100%);
+  color: #fff;
+}
