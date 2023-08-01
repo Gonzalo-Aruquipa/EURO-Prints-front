@@ -25,6 +25,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
 import { NavLink } from "react-router-dom";
 import { Prints } from "./Prints";
+import logo from "../assets/logo.png";
 
 const drawerWidth = 240;
 
@@ -122,6 +123,15 @@ export const Sidebar = () => {
           >
             <MenuIcon />
           </IconButton>
+          <NavLink to={"/"}>
+              <img
+                alt="logo"
+                src={logo}
+                width="100px"
+                height={"60px"}
+                style={{ cursor: "pointer", background:"white", borderRadius:50,marginTop:"7px" }}
+              />
+            </NavLink>
 
           <MenuItem>
             <NavLink className="login-header" to={"/login"}>
