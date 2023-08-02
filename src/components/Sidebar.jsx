@@ -16,16 +16,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import { Button, MenuItem, Typography } from "@mui/material";
-import { LogoutOutlined } from "@mui/icons-material";
+import { MenuItem } from "@mui/material";
+// import { LogoutOutlined } from "@mui/icons-material";
 import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 import PersonIcon from '@mui/icons-material/Person';
 import GroupIcon from '@mui/icons-material/Group';
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
-import { NavLink } from "react-router-dom";
-import { Prints } from "./Prints";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+// import { Users } from "./Users";
 
 const drawerWidth = 240;
 
@@ -94,8 +93,9 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export const Sidebar = () => {
+export const Sidebar = (ss) => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -105,6 +105,11 @@ export const Sidebar = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleUserPage =() =>{
+    navigate("/users")
+
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -153,7 +158,7 @@ export const Sidebar = () => {
           </Button> */}
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} position={"relative"}>
         <DrawerHeader className="drawer-color">
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -166,6 +171,7 @@ export const Sidebar = () => {
         <List className="drawer-color list">
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
+            onClick={handleUserPage}
               className="drawer-color"
               sx={{
                 minHeight: 48,
@@ -180,6 +186,7 @@ export const Sidebar = () => {
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
                 }}
+                
               >
                 <PersonIcon className="drawer-color" />
               </ListItemIcon>
@@ -241,7 +248,7 @@ export const Sidebar = () => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Prints/>
+        {ss.ss}
       </Box>
     </Box>
   );
