@@ -2,8 +2,8 @@ import "../App.css";
 
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
+import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -14,6 +14,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -38,16 +39,8 @@ const closedMixin = (theme) => ({
   },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
 
-const Drawer = styled(MuiDrawer, {
+const Drawer = styled(Box, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
   width: drawerWidth,
@@ -78,61 +71,58 @@ export const Sidebar = () => {
 
   return (
     <>
-      <div className="side">
-        <Box className="side">
-          <Drawer variant="permanent" open={open} className="side-color">
-            <DrawerHeader className="side-color">
-              <IconButton
-                className="side-color"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <Drawer variant="permanent" open={open} className="side-color side">
+          <IconButton
+            className="side-color"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{
+              marginRight: 2,ml:1,
+              ...(open && { display: "none" }),
+            }}
+          >
+            <MenuIcon className="side-color" />
+          </IconButton>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon className="side-color" />
+            ) : (
+              <ChevronLeftIcon className="side-color" />
+            )}
+          </IconButton>
+          <List className="side-color">
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <NavLink className={"link-side"} to={"/users"}>
+              <ListItemButton
                 sx={{
-                  marginRight: 5,
-                  ...(open && { display: "none" }),
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}
               >
-                <MenuIcon className="side-color" />
-              </IconButton>
-            </DrawerHeader>
-            <DrawerHeader className="side-color">
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === "rtl" ? (
-                  <ChevronRightIcon className="side-color" />
-                ) : (
-                  <ChevronLeftIcon className="side-color" />
-                )}
-              </IconButton>
-            </DrawerHeader>
-            <List className="side-color">
-              <ListItem disablePadding sx={{ display: "block" }}>
-                <ListItemButton
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <InboxIcon className="side-color" />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={"Usuarios"}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Drawer>
-        </Box>
-      </div>
+                  <InboxIcon className="side-color" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Usuarios"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+              </NavLink>
+            </ListItem>
+          </List>
+        </Drawer>
+      </Box>
     </>
   );
 };

@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Users } from "./components/Users";
 import { AppTheme } from "./theme";
-import { Sidebar } from "./components/Sidebar";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
         <AppTheme>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/users" element={<Sidebar ss={<Users/>} />} />
+            <Route exact path="/users" element={<Users />} />
           </Routes>
         </AppTheme>
       </Router>
