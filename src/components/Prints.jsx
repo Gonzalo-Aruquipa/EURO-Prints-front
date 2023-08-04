@@ -40,6 +40,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const Prints = () => {
   return (
     <>
+    <div className="prints">
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -95,7 +97,41 @@ export const Prints = () => {
                     variant="contained"
                     endIcon={<BorderColorIcon />}
                     sx={{ bgcolor: "#F7B908 " }}
-                  >
+                    >
+                    Editar
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                    sx={{ bgcolor: "#F71508", color: "white" }}
+                    >
+                    Eliminar
+                  </Button>
+                </Stack>
+              </StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow>
+              <StyledTableCell component="th" scope="row">
+                {"Alejandra"}
+              </StyledTableCell>
+              <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
+              <StyledTableCell align="center">
+                {"Texas Miraflores"}
+              </StyledTableCell>
+              <StyledTableCell align="center">{"3000"}</StyledTableCell>
+              <StyledTableCell align="center">
+                <Checkbox defaultChecked color="success" />
+              </StyledTableCell>
+              <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
+              <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
+              <StyledTableCell align="center">{"Ninguna"}</StyledTableCell>
+              <StyledTableCell align="center">
+                <Stack direction="row" spacing={1}>
+                  <Button
+                    variant="contained"
+                    endIcon={<BorderColorIcon />}
+                    sx={{ bgcolor: "#F7B908 " }}
+                    >
                     Editar
                   </Button>
                   <Button
@@ -129,48 +165,14 @@ export const Prints = () => {
                     variant="contained"
                     endIcon={<BorderColorIcon />}
                     sx={{ bgcolor: "#F7B908 " }}
-                  >
+                    >
                     Editar
                   </Button>
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                     sx={{ bgcolor: "#F71508", color: "white" }}
-                  >
-                    Eliminar
-                  </Button>
-                </Stack>
-              </StyledTableCell>
-            </StyledTableRow>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                {"Alejandra"}
-              </StyledTableCell>
-              <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
-              <StyledTableCell align="center">
-                {"Texas Miraflores"}
-              </StyledTableCell>
-              <StyledTableCell align="center">{"3000"}</StyledTableCell>
-              <StyledTableCell align="center">
-                <Checkbox defaultChecked color="success" />
-              </StyledTableCell>
-              <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
-              <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
-              <StyledTableCell align="center">{"Ninguna"}</StyledTableCell>
-              <StyledTableCell align="center">
-                <Stack direction="row" spacing={1}>
-                  <Button
-                    variant="contained"
-                    endIcon={<BorderColorIcon />}
-                    sx={{ bgcolor: "#F7B908 " }}
-                  >
-                    Editar
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    startIcon={<DeleteIcon />}
-                    sx={{ bgcolor: "#F71508", color: "white" }}
-                  >
+                    >
                     Eliminar
                   </Button>
                 </Stack>
@@ -195,7 +197,7 @@ export const Prints = () => {
                       color: red[600],
                     },
                   }}
-                />
+                  />
               </StyledTableCell>
               <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
               <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
@@ -206,14 +208,14 @@ export const Prints = () => {
                     variant="contained"
                     endIcon={<BorderColorIcon />}
                     sx={{ bgcolor: "#F7B908 " }}
-                  >
+                    >
                     Editar
                   </Button>
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                     sx={{ bgcolor: "#F71508", color: "white" }}
-                  >
+                    >
                     Eliminar
                   </Button>
                 </Stack>
@@ -237,7 +239,7 @@ export const Prints = () => {
                       color: red[600],
                     },
                   }}
-                />
+                  />
               </StyledTableCell>
               <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
               <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
@@ -248,14 +250,14 @@ export const Prints = () => {
                     variant="contained"
                     endIcon={<BorderColorIcon />}
                     sx={{ bgcolor: "#F7B908 " }}
-                  >
+                    >
                     Editar
                   </Button>
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                     sx={{ bgcolor: "#F71508", color: "white" }}
-                  >
+                    >
                     Eliminar
                   </Button>
                 </Stack>
@@ -280,7 +282,7 @@ export const Prints = () => {
                       color: red[600],
                     },
                   }}
-                />
+                  />
               </StyledTableCell>
               <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
               <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
@@ -291,14 +293,14 @@ export const Prints = () => {
                     variant="contained"
                     endIcon={<BorderColorIcon />}
                     sx={{ bgcolor: "#F7B908 " }}
-                  >
+                    >
                     Editar
                   </Button>
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                     sx={{ bgcolor: "#F71508", color: "white" }}
-                  >
+                    >
                     Eliminar
                   </Button>
                 </Stack>
@@ -307,6 +309,7 @@ export const Prints = () => {
           </TableBody>
         </Table>
       </TableContainer>
+                    </div>
     </>
   );
 };

@@ -1,35 +1,57 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
 
-import '../App.css'
+import { NavLink } from "react-router-dom";
+import { Button, MenuItem } from "@mui/material";
+import { LogoutOutlined } from "@mui/icons-material";
+import logo from "../assets/logo.png";
+import "../App.css";
 
 export const Navbar = () => {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="absolute" className='color-main navbar'>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+      <div>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="relative"  className="color-main navbar">
+            <Toolbar>
+              <NavLink to={"/"}>
+                <img
+                  alt="logo"
+                  src={logo}
+                  width="100px"
+                  height={"60px"}
+                  style={{
+                    cursor: "pointer",
+                    background: "white",
+                    borderRadius: 50,
+                    marginTop: "7px",
+                  }}
+                />
+              </NavLink>
+
+              <MenuItem>
+                <NavLink className="login-header" to={"/login"}>
+                  INICIAR SESIÓN
+                </NavLink>
+                <NavLink className="login-header" to={"/login"}>
+                  <LoginRoundedIcon></LoginRoundedIcon>
+                </NavLink>
+              </MenuItem>
+
+              <Button
+                variant="outlined"
+                // onClick={handleSesionClose}
+                sx={{ ml: 3, color: "#fff", border: "none" }}
+                endIcon={<LogoutOutlined />}
+              >
+                CERRAR SESIÓN
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </div>
     </>
   );
 };
