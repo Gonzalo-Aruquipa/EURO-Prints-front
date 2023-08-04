@@ -12,7 +12,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import PersonIcon from '@mui/icons-material/Person';
+import PeopleIcon from '@mui/icons-material/People';
+import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
+
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -111,10 +114,61 @@ export const Sidebar = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <InboxIcon className="side-color" />
+                  <PersonIcon className="side-color" />
                 </ListItemIcon>
                 <ListItemText
                   primary={"Usuarios"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+              </NavLink>
+            </ListItem>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <NavLink className={"link-side"} to={"/clients"}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  <PeopleIcon className="side-color" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Clientes"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+              </NavLink>
+            </ListItem>
+
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <NavLink className={"link-side"} to={"/products"}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  <LocalDrinkIcon  className="side-color" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Productos"}
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItemButton>

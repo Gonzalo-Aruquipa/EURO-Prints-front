@@ -1,8 +1,11 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import { AppTheme } from "./theme";
 import { Home } from "./components/Home";
 import { Users } from "./components/Users";
-import { AppTheme } from "./theme";
+import { Clients } from "./components/Clients";
+import { Products } from "./components/Products";
+import { Login } from "./components/Login";
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/users" element={<Users />} />
+            <Route exact path="/clients" element={<Clients />} />
+            <Route exact path="/products" element={<Products />} />
+            <Route exact path="/login" element={<Login />} />
           </Routes>
         </AppTheme>
       </Router>
