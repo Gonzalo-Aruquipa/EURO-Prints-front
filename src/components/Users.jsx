@@ -14,11 +14,13 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import SendIcon from "@mui/icons-material/Send";
 
 import "../App.css";
 import { Box } from "@mui/material";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
+import { NavLink } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -47,6 +49,13 @@ export const Users = () => {
       <div className="home">
         <Sidebar />
         <Box position={"relative"} className="users">
+        <div className="btn-create">
+        <NavLink to={"/new-users"}>
+          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<SendIcon />}>
+            Nuevo Usuario
+          </Button>
+          </NavLink>
+        </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>

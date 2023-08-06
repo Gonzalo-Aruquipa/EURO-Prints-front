@@ -15,6 +15,7 @@ import ListItemText from "@mui/material/ListItemText";
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
+import GradientIcon from '@mui/icons-material/Gradient';
 
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -169,6 +170,32 @@ export const Sidebar = () => {
                 </ListItemIcon>
                 <ListItemText
                   primary={"Productos"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+              </NavLink>
+            </ListItem>
+
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <NavLink className={"link-side"} to={"/"}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  <GradientIcon  className="side-color" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Impresiones"}
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItemButton>
