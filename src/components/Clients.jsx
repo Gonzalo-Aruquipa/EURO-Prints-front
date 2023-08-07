@@ -18,6 +18,7 @@ import "../App.css";
 import { Box } from "@mui/material";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
+import { NavLink } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -45,9 +46,11 @@ export const Clients = () => {
         <Sidebar />
         <Box position={"relative"} className="users">
         <div className="btn-create">
+        <NavLink to={"/new-client"}>
           <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<SendIcon />}>
             Nuevo Cliente
           </Button>
+          </NavLink>
         </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">

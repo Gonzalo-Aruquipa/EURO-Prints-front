@@ -48,7 +48,7 @@ export const Users = () => {
         <Sidebar />
         <Box position={"relative"} className="users">
         <div className="btn-create">
-        <NavLink to={"/new-users"}>
+        <NavLink to={"/new-user"}>
           <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<AddCircleOutlineIcon />}>
             Nuevo Usuario
           </Button>

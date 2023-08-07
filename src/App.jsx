@@ -7,6 +7,7 @@ import { Clients } from "./components/Clients";
 import { Products } from "./components/Products";
 import { Login } from "./components/Login";
 import { NewUser } from "./components/NewUser";
+import { NewClient } from "./components/NewClient";
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/users" element={<Users />} />
-            <Route exact path="/new-users" element={<NewUser />} />
+            <Route exact path="/new-user" element={<NewUser />} />
             <Route exact path="/clients" element={<Clients />} />
+            <Route exact path="/new-client" element={<NewClient />} />
             <Route exact path="/products" element={<Products />} />
             <Route exact path="/login" element={<Login />} />
           </Routes>
