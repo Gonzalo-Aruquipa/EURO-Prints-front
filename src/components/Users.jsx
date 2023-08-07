@@ -6,18 +6,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
 import { red } from "@mui/material/colors";
 import Checkbox from "@mui/material/Checkbox";
-
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import SendIcon from "@mui/icons-material/Send";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Box } from "@mui/material";
 
 import "../App.css";
-import { Box } from "@mui/material";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
 import { NavLink } from "react-router-dom";
@@ -51,7 +49,7 @@ export const Users = () => {
         <Box position={"relative"} className="users">
         <div className="btn-create">
         <NavLink to={"/new-users"}>
-          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<SendIcon />}>
+          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<AddCircleOutlineIcon />}>
             Nuevo Usuario
           </Button>
           </NavLink>
@@ -62,6 +60,9 @@ export const Users = () => {
                 <TableRow>
                   <StyledTableCell className="color-table">
                     Nombre
+                  </StyledTableCell>
+                  <StyledTableCell className="color-table" align="center">
+                    Usuario
                   </StyledTableCell>
                   <StyledTableCell className="color-table" align="center">
                     Cargo
@@ -82,6 +83,9 @@ export const Users = () => {
                 <StyledTableRow>
                   <StyledTableCell component="th" scope="row">
                     {"Juan Perez"}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {"Ale"}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {"Impresiones"}
@@ -116,6 +120,9 @@ export const Users = () => {
                 <StyledTableRow>
                   <StyledTableCell component="th" scope="row">
                     {"Gonzalo"}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {"gonza"}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {"Administrador"}

@@ -46,14 +46,14 @@ export const Login = () => {
           >
             <Typography
               component="h1"
-              variant="h2"
-              sx={{ color: "#013a63", mb: 1 }}
+              variant="h4"
+              sx={{ color: "#041A74", mb: 1, alignItems:"center" }}
             >
-              Impresiones Europlast
+              IMPRESIONES EUROPLAST
             </Typography>
-            <Avatar sx={{ m: 1, bgcolor: "#ff6700" }}></Avatar>
-            <Typography component="h1" variant="h5" sx={{ color: "#013a63" }}>
-              Iniciar Sesión
+            <Avatar sx={{ m: 1, bgcolor: "#ff0000ec" }}></Avatar>
+            <Typography component="h1" variant="h5" sx={{ color: "#041A74" }}>
+              INICIE SESIÓN
             </Typography>
             <Box
               component="form"
@@ -107,7 +107,7 @@ export const Login = () => {
                 fullWidth
                 variant="outlined"
                 endIcon={<Send />}
-                sx={{ mt: 3, mb: 2, color: "#013a63", border: 1 }}
+                sx={{ mt: 3, mb: 2, color: "#041A74", border: 1 }}
               >
                 Iniciar Sesión
               </Button>
