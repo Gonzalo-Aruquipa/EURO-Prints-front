@@ -14,9 +14,11 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import SendIcon from "@mui/icons-material/Send";
+
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import "../App.css";
+import { NavLink } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -43,9 +45,11 @@ export const Prints = () => {
     <>
       <div className="prints">
         <div className="btn-create">
-          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<SendIcon />}>
-            Nueva Asignación
+        <NavLink to={"/new-print"}>
+          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<AddCircleOutlineIcon />}>
+            Nueva Impresión
           </Button>
+          </NavLink>
         </div>
 
         <TableContainer component={Paper}>

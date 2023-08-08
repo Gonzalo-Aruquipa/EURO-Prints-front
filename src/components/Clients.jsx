@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import SendIcon from "@mui/icons-material/Send";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import "../App.css";
 import { Box } from "@mui/material";
@@ -47,7 +47,7 @@ export const Clients = () => {
         <Box position={"relative"} className="users">
         <div className="btn-create">
         <NavLink to={"/new-client"}>
-          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<SendIcon />}>
+          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<AddCircleOutlineIcon />}>
             Nuevo Cliente
           </Button>
           </NavLink>

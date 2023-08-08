@@ -8,6 +8,8 @@ import { Products } from "./components/Products";
 import { Login } from "./components/Login";
 import { NewUser } from "./components/NewUser";
 import { NewClient } from "./components/NewClient";
+import { NewProduct } from "./components/NewProduct";
+import { NewPrint } from "./components/NewPrint";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route exact path="/clients" element={<Clients />} />
             <Route exact path="/new-client" element={<NewClient />} />
             <Route exact path="/products" element={<Products />} />
+            <Route exact path="/new-product" element={<NewProduct />} />
+            <Route exact path="/new-print" element={<NewPrint/>} />
             <Route exact path="/login" element={<Login />} />
           </Routes>
         </AppTheme>
