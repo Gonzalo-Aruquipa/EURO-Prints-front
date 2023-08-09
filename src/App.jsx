@@ -10,11 +10,14 @@ import { NewUser } from "./components/NewUser";
 import { NewClient } from "./components/NewClient";
 import { NewProduct } from "./components/NewProduct";
 import { NewPrint } from "./components/NewPrint";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
     <>
       <Router>
+      <Provider store={store}>
         <AppTheme>
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -28,6 +31,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
           </Routes>
         </AppTheme>
+        </Provider>
       </Router>
     </>
   );

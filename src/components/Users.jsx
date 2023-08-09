@@ -19,6 +19,9 @@ import "../App.css";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../redux/action";
+import { useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,6 +44,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const Users = () => {
+
+  const dispatch = useDispatch();
+  const users = useSelector(state => state.users);
+
+  console.log(users)
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch])
+
   return (
     <>
       <Navbar />
