@@ -1,6 +1,6 @@
-import { GET_USERS } from "./action";
+import { GET_USERS, GET_PRINTS } from "./action";
 
-const initialState ={
+const initialState = {
   prints: [],
   printId: [],
   users: [],
@@ -9,12 +9,15 @@ const initialState ={
   clientId: [],
   products: [],
   productId: [],
-
 };
 
-export default function reducer (state = initialState, { type, payload }) {
+export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-
+    case GET_PRINTS:
+      return {
+        ...state,
+        users: payload,
+      };
     case GET_USERS:
       return {
         ...state,
