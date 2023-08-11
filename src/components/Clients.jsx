@@ -6,19 +6,20 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
-
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Box } from "@mui/material";
 
 import "../App.css";
-import { Box } from "@mui/material";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getClients } from "../redux/action";
+import { useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,6 +41,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 export const Clients = () => {
+
+  const dispatch = useDispatch();
+  const clients = useSelector((state) => state.clients);
+
+  console.log(clients);
+
+  useEffect(() => {
+    dispatch(getClients());
+  }, [dispatch]);
   return (<>
     <Navbar />
       <div className="home">
