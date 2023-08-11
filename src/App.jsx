@@ -12,6 +12,7 @@ import { NewProduct } from "./components/NewProduct";
 import { NewPrint } from "./components/NewPrint";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { UpdateUser } from "./components/UpdateUser";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/users" element={<Users />} />
             <Route exact path="/new-user" element={<NewUser />} />
+            <Route exact path="/update-user/:id" element={<UpdateUser />} />
             <Route exact path="/clients" element={<Clients />} />
             <Route exact path="/new-client" element={<NewClient />} />
             <Route exact path="/products" element={<Products />} />

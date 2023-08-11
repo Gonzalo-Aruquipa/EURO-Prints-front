@@ -112,6 +112,7 @@ export const Users = () => {
                   </StyledTableCell>
                   <StyledTableCell align="left">
                     <Stack direction="row" spacing={1} align="left">
+                    <NavLink to={"/update-user/2"}>
                       <Button
                         variant="contained"
                         endIcon={<BorderColorIcon />}
@@ -119,6 +120,7 @@ export const Users = () => {
                       >
                         Editar
                       </Button>
+                      </NavLink>
                       <Button
                         variant="outlined"
                         startIcon={<DeleteIcon />}
