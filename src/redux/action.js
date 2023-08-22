@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const GET_USERS = "GET_USERS";
 export const GET_PRINTS = "GET_PRINTS";
@@ -10,9 +11,12 @@ const URL = "http://localhost:3000";
 export const createUser = (payload) => {
   return async function () {
     try {
-     await axios.post(`${URL}/user/register`, payload);
+     const response = await axios.post(`${URL}/user/register`, payload);
+     Swal.fire("OK", response.data, "success");
+
     } catch (error) {
       console.log(error);
+      Swal.fire(error.response.data, "Vuelva a Intentarlo", "error");
     }
   };
 }

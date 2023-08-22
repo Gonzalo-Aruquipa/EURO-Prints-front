@@ -18,7 +18,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../redux/action";
-import Swal from "sweetalert2";
 
 export const NewUser = () => {
   const navigate = useNavigate();
@@ -46,11 +45,11 @@ export const NewUser = () => {
     e.preventDefault();
     try {
       dispatch(createUser(input));
-      Swal.fire("OK", "El usuario se agregó correctamente", "success");
+      // Swal.fire("OK", "El usuario se agregó correctamente", "success");
       navigate("/users");
     } catch (error) {
       console.log(error);
-      Swal.fire(error, "Vuelva a Intentarlo", "error");
+      // Swal.fire(error, "Vuelva a Intentarlo", "error");
       navigate("/users");
     }
     navigate("/users");
