@@ -21,7 +21,6 @@ import { createUser } from "../redux/action";
 import Swal from "sweetalert2";
 
 export const NewUser = () => {
-  
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [input, setInput] = useState({
@@ -29,33 +28,32 @@ export const NewUser = () => {
     username: "",
     password: "",
     role: "",
-    date_u: ""
+    date_u: "",
   });
-  // const fecha= new Date().substring(0,10); 
-  const year= new Date().getFullYear(); 
-  const month= new Date().getMonth() + 1; 
-  const day= new Date().getDate(); 
+  // const fecha= new Date().substring(0,10);
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
+  const day = new Date().getDate();
 
-  const fecha= year+"-"+month+"-"+day;
+  const fecha = year + "-" + month + "-" + day;
 
-  input.date_u= fecha;
-  
+  input.date_u = fecha;
+
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
+      dispatch(createUser(input));
       Swal.fire("OK", "El usuario se agregó correctamente", "success");
       navigate("/users");
-      
     } catch (error) {
       console.log(error);
-      Swal.fire("Hubo un error", "Vuelva a Intentarlo", "error");
+      Swal.fire(error, "Vuelva a Intentarlo", "error");
       navigate("/users");
     }
-    dispatch(createUser(input));
-    navigate("/users")
+    navigate("/users");
   };
   return (
     <>
@@ -151,7 +149,13 @@ export const NewUser = () => {
                 fullWidth
                 variant="contained"
                 endIcon={<Send />}
-                sx={{ mt: 3, mb: 2,bgcolor: "#041A74", color: "#fff", border: 1 }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  bgcolor: "#041A74",
+                  color: "#fff",
+                  border: 1,
+                }}
               >
                 Guardar
               </Button>

@@ -18,10 +18,11 @@ import { Box } from "@mui/material";
 import "../App.css";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../redux/action";
+import { getUsers, logicUser } from "../redux/action";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -45,14 +46,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export const Users = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const users = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const handleLogic = () =>{
+  const handleLogic = (e) =>{
 
+    try {
+      dispatch(logicUser(e))
+      Swal.fire("OK", "Modificación Correcta", "success");
+      navigate("/users");
+      
+    } catch (error) {
+      Swal.fire("Hubo un error", "Vuelva a Intentarlo", "error");
+      navigate("/users");
+    }
   }
 
   return (
@@ -119,7 +130,9 @@ export const Users = () => {
                         </StyledTableCell>
                         {user.active ? (
                           <StyledTableCell align="left">
-                            <Checkbox defaultChecked color="success" />
+                            <Checkbox 
+                            onClick={()=>handleLogic(user.id)}
+                            defaultChecked color="success" />
                             {"Activado"}
                           </StyledTableCell>
                         ) : (

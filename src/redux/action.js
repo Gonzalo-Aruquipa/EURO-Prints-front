@@ -30,6 +30,16 @@ export const getUsers=( )=> {
     }
   };
 }
+
+export const logicUser = (payload) =>{
+  return async function () {
+    try {
+     await axios.post(`${URL}/user/logic/${payload}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 export const getPrints=( )=> {
   return async function (dispatch) {
     try {
