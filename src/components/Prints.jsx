@@ -72,6 +72,9 @@ export const Prints = () => {
             <TableHead>
               <TableRow>
                 <StyledTableCell className="color-table">
+                  Asesor
+                </StyledTableCell>
+                <StyledTableCell className="color-table">
                   Responsable
                 </StyledTableCell>
                 <StyledTableCell className="color-table" align="center">
@@ -102,13 +105,16 @@ export const Prints = () => {
             </TableHead>
             <TableBody>
               <StyledTableRow>
+              <StyledTableCell component="th" scope="row">
+                  {"Alicia"}
+                </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                   {"Alejandra"}
                 </StyledTableCell>
-                <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
                 <StyledTableCell align="center">
                   {"Texas Miraflores"}
                 </StyledTableCell>
+                <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
                 <StyledTableCell align="center">{"3000"}</StyledTableCell>
                 <StyledTableCell align="center">
                   <Checkbox defaultChecked color="success" />
@@ -135,161 +141,11 @@ export const Prints = () => {
                   </Stack>
                 </StyledTableCell>
               </StyledTableRow>
+              
               <StyledTableRow>
                 <StyledTableCell component="th" scope="row">
-                  {"Alejandra"}
+                  {"Alicia"}
                 </StyledTableCell>
-                <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  {"Texas Miraflores"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"3000"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Checkbox defaultChecked color="success" />
-                </StyledTableCell>
-                <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"Ninguna"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Stack direction="row" spacing={1}>
-                    <Button
-                      variant="contained"
-                      endIcon={<BorderColorIcon />}
-                      sx={{ bgcolor: "#F7B908 " }}
-                    >
-                      Editar
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={<DeleteIcon />}
-                      sx={{ bgcolor: "#F71508", color: "white" }}
-                    >
-                      Eliminar
-                    </Button>
-                  </Stack>
-                </StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component="th" scope="row">
-                  {"Alejandra"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  {"Texas Miraflores"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"3000"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Checkbox defaultChecked color="success" />
-                </StyledTableCell>
-                <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"Ninguna"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Stack direction="row" spacing={1}>
-                    <Button
-                      variant="contained"
-                      endIcon={<BorderColorIcon />}
-                      sx={{ bgcolor: "#F7B908 " }}
-                    >
-                      Editar
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={<DeleteIcon />}
-                      sx={{ bgcolor: "#F71508", color: "white" }}
-                    >
-                      Eliminar
-                    </Button>
-                  </Stack>
-                </StyledTableCell>
-              </StyledTableRow>
-
-              <StyledTableRow>
-                <StyledTableCell component="th" scope="row">
-                  {"Alejandra"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  {"Texas Miraflores"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"3000"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Checkbox
-                    value={"X"}
-                    sx={{
-                      color: red[800],
-                      "&.Mui-checked": {
-                        color: red[600],
-                      },
-                    }}
-                  />
-                </StyledTableCell>
-                <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"Ninguna"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Stack direction="row" spacing={1}>
-                    <Button
-                      variant="contained"
-                      endIcon={<BorderColorIcon />}
-                      sx={{ bgcolor: "#F7B908 " }}
-                    >
-                      Editar
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={<DeleteIcon />}
-                      sx={{ bgcolor: "#F71508", color: "white" }}
-                    >
-                      Eliminar
-                    </Button>
-                  </Stack>
-                </StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell component="th" scope="row">
-                  {"Alejandra"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"CT-5"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  {"Texas Miraflores"}
-                </StyledTableCell>
-                <StyledTableCell align="center">{"3000"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Checkbox
-                    defaultChecked
-                    sx={{
-                      color: red[800],
-                      "&.Mui-checked": {
-                        color: red[600],
-                      },
-                    }}
-                  />
-                </StyledTableCell>
-                <StyledTableCell align="center">{"01-08-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"03-8-2023"}</StyledTableCell>
-                <StyledTableCell align="center">{"Ninguna"}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Stack direction="row" spacing={1}>
-                    <Button
-                      variant="contained"
-                      endIcon={<BorderColorIcon />}
-                      sx={{ bgcolor: "#F7B908 " }}
-                    >
-                      Editar
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      startIcon={<DeleteIcon />}
-                      sx={{ bgcolor: "#F71508", color: "white" }}
-                    >
-                      Eliminar
-                    </Button>
-                  </Stack>
-                </StyledTableCell>
-              </StyledTableRow>
-
-              <StyledTableRow>
                 <StyledTableCell component="th" scope="row">
                   {"Alejandra"}
                 </StyledTableCell>

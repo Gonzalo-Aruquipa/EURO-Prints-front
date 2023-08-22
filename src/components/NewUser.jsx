@@ -15,11 +15,46 @@ import {
 import { Navbar } from "./Navbar";
 import { Send } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createUser } from "../redux/action";
+import Swal from "sweetalert2";
 
 export const NewUser = () => {
-
+  
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    name: "",
+    username: "",
+    password: "",
+    role: "",
+    date_u: ""
+  });
+  // const fecha= new Date().substring(0,10); 
+  const year= new Date().getFullYear(); 
+  const month= new Date().getMonth() + 1; 
+  const day= new Date().getDate(); 
+
+  const fecha= year+"-"+month+"-"+day;
+
+  input.date_u= fecha;
+  
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      Swal.fire("OK", "El usuario se agregó correctamente", "success");
+      navigate("/users");
+      
+    } catch (error) {
+      console.log(error);
+      Swal.fire("Hubo un error", "Vuelva a Intentarlo", "error");
+      navigate("/users");
+    }
+    dispatch(createUser(input));
     navigate("/users")
   };
   return (
@@ -58,7 +93,7 @@ export const NewUser = () => {
             >
               <TextField
                 margin="normal"
-                // onChange={(e) => handleUser(e)}
+                onChange={(e) => handleChange(e)}
                 required
                 fullWidth
                 type="text"
@@ -71,20 +106,20 @@ export const NewUser = () => {
 
               <TextField
                 margin="normal"
-                // onChange={(e) => handleUser(e)}
+                onChange={(e) => handleChange(e)}
                 required
                 fullWidth
                 type="text"
-                id="user"
+                id="username"
                 label="Usuario"
-                name="user"
-                autoComplete="user"
+                name="username"
+                autoComplete="username"
                 autoFocus
               />
 
               <TextField
                 margin="normal"
-                // onChange={(e) => handleUser(e)}
+                onChange={(e) => handleChange(e)}
                 required
                 fullWidth
                 id="password"
@@ -100,12 +135,14 @@ export const NewUser = () => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={age}
                   label="Cargo *"
-                  // onChange={handleChange}
+                  defaultValue={"DEFAULT"}
+                  onChange={handleChange}
+                  name="role"
                 >
                   <MenuItem value={"Administrador"}>Administrador</MenuItem>
                   <MenuItem value={"Impresiones"}>Impresiones</MenuItem>
+                  <MenuItem value={"Asesor"}>Asesor Ventas</MenuItem>
                 </Select>
               </FormControl>
 

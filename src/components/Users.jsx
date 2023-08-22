@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Box } from "@mui/material";
 
 import "../App.css";
@@ -44,15 +44,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const Users = () => {
-
   const dispatch = useDispatch();
-  const users = useSelector(state => state.users);
-
-  console.log(users)
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getUsers());
-  }, [dispatch])
+  }, [dispatch]);
+
+  const handleLogic = () =>{
+
+  }
 
   return (
     <>
@@ -60,13 +61,21 @@ export const Users = () => {
       <div className="home">
         <Sidebar />
         <Box position={"relative"} className="users">
-        <div className="btn-create">
-        <NavLink to={"/new-user"}>
-          <Button sx={{ bgcolor: "#ff0000ec", color:"white", borderColor: "#041A74" }} variant="outlined" endIcon={<AddCircleOutlineIcon />}>
-            Nuevo Usuario
-          </Button>
-          </NavLink>
-        </div>
+          <div className="btn-create">
+            <NavLink to={"/new-user"}>
+              <Button
+                sx={{
+                  bgcolor: "#ff0000ec",
+                  color: "white",
+                  borderColor: "#041A74",
+                }}
+                variant="outlined"
+                endIcon={<AddCircleOutlineIcon />}
+              >
+                Nuevo Usuario
+              </Button>
+            </NavLink>
+          </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
@@ -93,89 +102,65 @@ export const Users = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    {"Juan Perez"}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {"Ale"}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {"Impresiones"}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {"01-08-2023"}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    <Checkbox defaultChecked color="success" />
-                    {"Activado"}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    <Stack direction="row" spacing={1} align="left">
-                    <NavLink to={"/update-user/2"}>
-                      <Button
-                        variant="contained"
-                        endIcon={<BorderColorIcon />}
-                        sx={{ bgcolor: "#F7B908 " }}
-                      >
-                        Editar
-                      </Button>
-                      </NavLink>
-                      <Button
-                        variant="outlined"
-                        startIcon={<DeleteIcon />}
-                        sx={{ bgcolor: "#F71508", color: "white" }}
-                      >
-                        Eliminar
-                      </Button>
-                    </Stack>
-                  </StyledTableCell>
-                </StyledTableRow>
+                {users.length !== 0
+                  ? users.map((user) => (
+                      <StyledTableRow key={user.id}>
+                        <StyledTableCell component="th" scope="row">
+                          {user.name}
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          {user.username}
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          {user.role}
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          {user.date_u}
+                        </StyledTableCell>
+                        {user.active ? (
+                          <StyledTableCell align="left">
+                            <Checkbox defaultChecked color="success" />
+                            {"Activado"}
+                          </StyledTableCell>
+                        ) : (
+                          <StyledTableCell align="left">
+                            <Checkbox
+                            onClick={()=>handleLogic(user.id)}
+                              defaultChecked
+                              sx={{
+                                color: red[800],
+                                "&.Mui-checked": {
+                                  color: red[600],
+                                },
+                              }}
+                            />
+                            {"Desactivado"}
+                          </StyledTableCell>
+                        )}
 
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    {"Gonzalo"}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {"gonza"}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {"Administrador"}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {"01-08-2023"}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">
-                    <Checkbox
-                      value={"X"}
-                      sx={{
-                        color: red[800],
-                        "&.Mui-checked": {
-                          color: red[600],
-                        },
-                      }}
-                    />
-                    {"Desactivado"}
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    <Stack direction="row" spacing={1}>
-                      <Button
-                        variant="contained"
-                        endIcon={<BorderColorIcon />}
-                        sx={{ bgcolor: "#F7B908 " }}
-                      >
-                        Editar
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        startIcon={<DeleteIcon />}
-                        sx={{ bgcolor: "#F71508", color: "white" }}
-                      >
-                        Eliminar
-                      </Button>
-                    </Stack>
-                  </StyledTableCell>
-                </StyledTableRow>
+                        <StyledTableCell align="left">
+                          <Stack direction="row" spacing={1} align="left">
+                            <NavLink to={"/update-user/2"}>
+                              <Button
+                                variant="contained"
+                                endIcon={<BorderColorIcon />}
+                                sx={{ bgcolor: "#F7B908 " }}
+                              >
+                                Editar
+                              </Button>
+                            </NavLink>
+                            <Button
+                              variant="outlined"
+                              startIcon={<DeleteIcon />}
+                              sx={{ bgcolor: "#F71508", color: "white" }}
+                            >
+                              Eliminar
+                            </Button>
+                          </Stack>
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    ))
+                  : null}
               </TableBody>
             </Table>
           </TableContainer>

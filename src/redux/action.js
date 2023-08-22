@@ -7,7 +7,29 @@ export const GET_PRODUCTS = "GET_PRODUCTS ";
 
 const URL = "http://localhost:3000";
 
+export const createUser = (payload) => {
+  return async function () {
+    try {
+     await axios.post(`${URL}/user/register`, payload);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 
+export const getUsers=( )=> {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get(`${URL}/user/users`);
+      return dispatch({
+        type: GET_USERS,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 export const getPrints=( )=> {
   return async function (dispatch) {
     try {
@@ -22,19 +44,6 @@ export const getPrints=( )=> {
   };
 }
 
-export const getUsers=( )=> {
-  return async function (dispatch) {
-    try {
-      const res = await axios.get(`${URL}/users`);
-      return dispatch({
-        type: GET_USERS,
-        payload: res.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
 
 export const getClients=( )=> {
   return async function (dispatch) {
