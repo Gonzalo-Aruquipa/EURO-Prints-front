@@ -58,7 +58,7 @@ export const NewUser = () => {
   };
   const validate = (input) => {
     const errors = {};
-    let RegEXP = /[`ª!@#$%^*-+\=\[\]{};"\\|,<>\/~]/;
+    let RegEXP = /[`ª!@#$%^*-+=[\]{};"\\|,<>/~]/;
     if (!input.name) {
       errors.name = "Campo obligatorio";
     }

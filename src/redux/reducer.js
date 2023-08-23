@@ -1,4 +1,10 @@
-import { GET_USERS, GET_PRINTS, GET_CLIENTS, GET_PRODUCTS } from "./action";
+import {
+  GET_USERS,
+  GET_PRINTS,
+  GET_CLIENTS,
+  GET_PRODUCTS,
+  GET_USER_ID,
+} from "./action";
 
 const initialState = {
   prints: [],
@@ -23,12 +29,17 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
-      case GET_CLIENTS:
+    case GET_USER_ID:
+      return {
+        ...state,
+        userId: payload,
+      };
+    case GET_CLIENTS:
       return {
         ...state,
         clients: payload,
       };
-      case GET_PRODUCTS:
+    case GET_PRODUCTS:
       return {
         ...state,
         products: payload,

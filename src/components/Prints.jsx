@@ -51,6 +51,7 @@ export const Prints = () => {
   return (
     <>
       <div className="prints">
+      <p className="title-body">Impresiones</p>
         <div className="btn-create">
           <NavLink to={"/new-print"}>
             <Button

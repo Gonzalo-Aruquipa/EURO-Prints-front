@@ -14,14 +14,68 @@ import {
 } from "@mui/material";
 import { Navbar } from "./Navbar";
 import { Send } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getUserId, updateUser } from "../redux/action";
 
 export const UpdateUser = () => {
 
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    navigate("/users")
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.userId);
+  const [error, setError] = useState({});
+  const [input, setInput] = useState({
+    name: "",
+    username: "",
+    password: "",
+    role: "",
+  });
+  console.log(input);
+
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getUserId(id))
+    setInput(user);
+  }, [dispatch])
+
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+    setError(validate({ ...input, [e.target.name]: e.target.value }));
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      dispatch(updateUser(input));
+      navigate("/users");
+    } catch (error) {
+      console.log(error);
+      navigate("/users");
+    }
+    navigate("/users");
+  };
+  const validate = (input) => {
+    const errors = {};
+    let RegEXP = /[`ª!@#$%^*-+=[\]{};"\\|,<>/~]/;
+    if (!input.name) {
+      errors.name = "Campo obligatorio";
+    }
+    if (!input.username) {
+      errors.username = "Campo obligatorio";
+    } else if (RegEXP.test(input.username)) {
+      errors.username = "No se aceptan caracteres especiales";
+    }
+
+    if (!input.password) {
+      errors.password = "Campo obligatorio";
+    } else if (!/^[a-z0-9_-]{6,}$/.test(input.password)) {
+      errors.password = "Introduzca más de 6 caracteres";
+    }
+    return errors;
+  };
+
   return (
     <>
       <Navbar />
@@ -58,33 +112,35 @@ export const UpdateUser = () => {
             >
               <TextField
                 margin="normal"
-                // onChange={(e) => handleUser(e)}
+                onChange={(e) => handleChange(e)}
                 required
                 fullWidth
+                value={input.name}
                 type="text"
-                id="name"
-                label="Nombre"
                 name="name"
-                autoComplete="name"
+                id="name"
                 autoFocus
               />
+              {error.name && <p className="danger-p">{error.name}</p>}
 
               <TextField
                 margin="normal"
-                // onChange={(e) => handleUser(e)}
+                onChange={(e) => handleChange(e)}
                 required
                 fullWidth
+                value={input.username}
+                disabled
                 type="text"
-                id="user"
-                label="Usuario"
-                name="user"
-                autoComplete="user"
+                id="username"
+                name="username"
+                autoComplete="username"
                 autoFocus
               />
+              {error.username && <p className="danger-p">{error.username}</p>}
 
               <TextField
                 margin="normal"
-                // onChange={(e) => handleUser(e)}
+                onChange={(e) => handleChange(e)}
                 required
                 fullWidth
                 id="password"
@@ -94,29 +150,41 @@ export const UpdateUser = () => {
                 autoComplete="password"
                 autoFocus
               />
+              {error.password && <p className="danger-p">{error.password}</p>}
 
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Cargo *</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={age}
                   label="Cargo *"
-                  // onChange={handleChange}
+                  defaultValue={"DEFAULT"}
+                  value={input.role}
+                  onChange={handleChange}
+                  name="role"
                 >
                   <MenuItem value={"Administrador"}>Administrador</MenuItem>
                   <MenuItem value={"Impresiones"}>Impresiones</MenuItem>
+                  <MenuItem value={"Asesor"}>Asesor Ventas</MenuItem>
                 </Select>
               </FormControl>
+              {error.role && <p className="danger-p">{error.role}</p>}
 
               <Button
+                disabled={error.name || error.username || error.password || error.role ? true : false}
                 type="submit"
                 fullWidth
                 variant="contained"
                 endIcon={<Send />}
-                sx={{ mt: 3, mb: 2,bgcolor: "#041A74", color: "#fff", border: 1 }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  bgcolor: "#041A74",
+                  color: "#fff",
+                  border: 1,
+                }}
               >
-                Guardar Cambios
+                Guardar
               </Button>
             </Box>
           </Box>

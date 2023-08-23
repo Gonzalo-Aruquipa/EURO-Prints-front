@@ -6,8 +6,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { red } from "@mui/material/colors";
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
@@ -53,18 +51,16 @@ export const Users = () => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const handleLogic = (e) =>{
-
+  const handleLogic = (e) => {
     try {
-      dispatch(logicUser(e))
+      dispatch(logicUser(e));
       Swal.fire("OK", "Modificación Correcta", "success");
-      navigate("/users");
-      
+      navigate("/");
     } catch (error) {
       Swal.fire("Hubo un error", "Vuelva a Intentarlo", "error");
       navigate("/users");
     }
-  }
+  };
 
   return (
     <>
@@ -72,6 +68,7 @@ export const Users = () => {
       <div className="home">
         <Sidebar />
         <Box position={"relative"} className="users">
+          <p className="title-body">Usuarios</p>
           <div className="btn-create">
             <NavLink to={"/new-user"}>
               <Button
@@ -130,30 +127,29 @@ export const Users = () => {
                         </StyledTableCell>
                         {user.active ? (
                           <StyledTableCell align="left">
-                            <Checkbox 
-                            onClick={()=>handleLogic(user.id)}
-                            defaultChecked color="success" />
-                            {"Activado"}
+                            <Button
+                              variant="contained"
+                              color="success"
+                              onClick={() => handleLogic(user.id)}
+                            >
+                              Activado
+                            </Button>
                           </StyledTableCell>
                         ) : (
                           <StyledTableCell align="left">
-                            <Checkbox
-                            onClick={()=>handleLogic(user.id)}
-                              defaultChecked
-                              sx={{
-                                color: red[800],
-                                "&.Mui-checked": {
-                                  color: red[600],
-                                },
-                              }}
-                            />
-                            {"Desactivado"}
+                            <Button
+                              variant="contained"
+                              color="error"
+                              onClick={() => handleLogic(user.id)}
+                            >
+                              Desactivado
+                            </Button>
                           </StyledTableCell>
                         )}
 
                         <StyledTableCell align="left">
                           <Stack direction="row" spacing={1} align="left">
-                            <NavLink to={"/update-user/2"}>
+                            <NavLink to={`/update-user/${user.id}`}>
                               <Button
                                 variant="contained"
                                 endIcon={<BorderColorIcon />}
