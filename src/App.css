@@ -67,4 +67,7 @@
  margin-top: 5px;
  margin-bottom: 10px;
 }
-
+.danger-p {
+  color: red;
+  font-size: 10px;
+}

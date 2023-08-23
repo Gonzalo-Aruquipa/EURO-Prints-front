@@ -22,6 +22,7 @@ import { createUser } from "../redux/action";
 export const NewUser = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [error, setError] = useState({});
   const [input, setInput] = useState({
     name: "",
     username: "",
@@ -40,6 +41,7 @@ export const NewUser = () => {
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setError(validate({ ...input, [e.target.name]: e.target.value }));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +56,26 @@ export const NewUser = () => {
     }
     navigate("/users");
   };
+  const validate = (input) => {
+    const errors = {};
+    let RegEXP = /[`ª!@#$%^*-+\=\[\]{};"\\|,<>\/~]/;
+    if (!input.name) {
+      errors.name = "Campo obligatorio";
+    }
+    if (!input.username) {
+      errors.username = "Campo obligatorio";
+    } else if (RegEXP.test(input.username)) {
+      errors.username = "No se aceptan caracteres especiales";
+    }
+
+    if (!input.password) {
+      errors.password = "Campo obligatorio";
+    } else if (!/^[a-z0-9_-]{6,}$/.test(input.password)) {
+      errors.password = "Introduzca más de 6 caracteres";
+    }
+    return errors;
+  };
+
   return (
     <>
       <Navbar />
@@ -100,6 +122,7 @@ export const NewUser = () => {
                 autoComplete="name"
                 autoFocus
               />
+              {error.name && <p className="danger-p">{error.name}</p>}
 
               <TextField
                 margin="normal"
@@ -113,6 +136,7 @@ export const NewUser = () => {
                 autoComplete="username"
                 autoFocus
               />
+              {error.username && <p className="danger-p">{error.username}</p>}
 
               <TextField
                 margin="normal"
@@ -126,6 +150,7 @@ export const NewUser = () => {
                 autoComplete="password"
                 autoFocus
               />
+              {error.password && <p className="danger-p">{error.password}</p>}
 
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Cargo *</InputLabel>
@@ -142,8 +167,10 @@ export const NewUser = () => {
                   <MenuItem value={"Asesor"}>Asesor Ventas</MenuItem>
                 </Select>
               </FormControl>
+              {error.role && <p className="danger-p">{error.role}</p>}
 
               <Button
+                disabled={error.name || error.username || error.password || error.role ? true : false}
                 type="submit"
                 fullWidth
                 variant="contained"
