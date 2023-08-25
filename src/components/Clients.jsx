@@ -17,9 +17,9 @@ import "../App.css";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getClients } from "../redux/action";
-import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getClients } from "../redux/action";
+// import { useEffect } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -42,14 +42,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 export const Clients = () => {
 
-  const dispatch = useDispatch();
-  const clients = useSelector((state) => state.clients);
+  // const dispatch = useDispatch();
+  // const clients = useSelector((state) => state.clients);
 
-  console.log(clients);
+  // console.log(clients);
 
-  useEffect(() => {
-    dispatch(getClients());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getClients());
+  // }, [dispatch]);
   return (<>
     <Navbar />
       <div className="home">

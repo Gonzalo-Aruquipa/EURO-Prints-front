@@ -5,10 +5,14 @@ import {
   Container,
   CssBaseline,
   FormControl,
+  // FormControl,
   Grid,
   InputLabel,
   MenuItem,
   Select,
+  // InputLabel,
+  // MenuItem,
+  // Select,
   TextField,
   Typography,
 } from "@mui/material";
@@ -20,10 +24,10 @@ import { useEffect, useState } from "react";
 import { getUserId, updateUser } from "../redux/action";
 
 export const UpdateUser = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.userId);
+  const user = useSelector((state) => state.userId);
+  console.log(user)
   const [error, setError] = useState({});
   const [input, setInput] = useState({
     name: "",
@@ -31,15 +35,12 @@ export const UpdateUser = () => {
     password: "",
     role: "",
   });
-  console.log(input);
-
 
   const { id } = useParams();
-
   useEffect(() => {
-    dispatch(getUserId(id))
+    dispatch(getUserId(id));
     setInput(user);
-  }, [dispatch])
+  }, [dispatch]);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -49,6 +50,12 @@ export const UpdateUser = () => {
     e.preventDefault();
     try {
       dispatch(updateUser(input));
+      setInput({
+        name: "",
+        username: "",
+        password: "",
+        role: "",
+      });
       navigate("/users");
     } catch (error) {
       console.log(error);
@@ -115,10 +122,10 @@ export const UpdateUser = () => {
                 onChange={(e) => handleChange(e)}
                 required
                 fullWidth
-                value={input.name}
                 type="text"
                 name="name"
                 id="name"
+                value={input.length !== 0? input.name: "" }
                 autoFocus
               />
               {error.name && <p className="danger-p">{error.name}</p>}
@@ -128,8 +135,8 @@ export const UpdateUser = () => {
                 onChange={(e) => handleChange(e)}
                 required
                 fullWidth
-                value={input.username}
                 disabled
+                // value={input.username}
                 type="text"
                 id="username"
                 name="username"
@@ -158,20 +165,23 @@ export const UpdateUser = () => {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Cargo *"
-                  defaultValue={"DEFAULT"}
-                  value={input.role}
-                  onChange={handleChange}
-                  name="role"
+                  defaultValue={""}
+                  onChange={(e)=>handleChange(e)}
                 >
                   <MenuItem value={"Administrador"}>Administrador</MenuItem>
                   <MenuItem value={"Impresiones"}>Impresiones</MenuItem>
                   <MenuItem value={"Asesor"}>Asesor Ventas</MenuItem>
                 </Select>
               </FormControl>
+
               {error.role && <p className="danger-p">{error.role}</p>}
 
               <Button
-                disabled={error.name || error.username || error.password || error.role ? true : false}
+                disabled={
+                  error.name || error.username || error.password || error.role
+                    ? true
+                    : false
+                }
                 type="submit"
                 fullWidth
                 variant="contained"

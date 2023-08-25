@@ -16,9 +16,9 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 import "../App.css";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getPrints } from "../redux/action";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import { getPrints } from "../redux/action";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,14 +40,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const Prints = () => {
-  const dispatch = useDispatch();
-  const prints = useSelector((state) => state.prints);
+  // const dispatch = useDispatch();
+  // const prints = useSelector((state) => state.prints);
 
-  console.log(prints);
+  // console.log(prints);
 
-  useEffect(() => {
-    dispatch(getPrints());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getPrints());
+  // }, [dispatch]);
   return (
     <>
       <div className="prints">
